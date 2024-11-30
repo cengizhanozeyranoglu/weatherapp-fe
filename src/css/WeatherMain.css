@@ -1,0 +1,8 @@
+.weather-main {
+    background-color: aquamarine;
+    margin: 0;
+    padding: 0;
+    background-image: url('../css/img/havadurumu1.jpg');
+    background-size: cover;
+    height: 100vh;
+}

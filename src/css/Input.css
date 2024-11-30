@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.inputCity {
+    display: flex;
+    border: 2px solid red;
+    border-radius: 5px;
+    margin-top: 100px;
+    font-size: 20px;
+}
+
+.handleButton {
+    margin-top: 100px;
+    border-radius: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.succes-data {
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+}
+
+.longitude {
+    margin-right: 50px;
+    margin-left: 50px;
+}
