@@ -9,8 +9,11 @@ function Container() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [data, setData] = useState({});
     const [city, setCity] = useState("");
+    const [weather, setWeather] = useState([]);
 
     const BASE_URL = "/rest/api/weather?city="
+
+
 
     const getData = async (city) => {
         setIsLoaded(false)
@@ -22,8 +25,8 @@ function Container() {
                 setData(response.data.data);
                 setIsLoaded(true);
                 setError(null)
-                console.log(response.data)
-                console.log(response.data.data.latitude)
+                setWeather(response.data.data.hourly.temperature_2m)
+                console.log(response.data.data.hourly.temperature_2m);
             } else {
                 setError("Empty data");
                 setIsLoaded(true);
@@ -49,7 +52,32 @@ function Container() {
         if (city) {
             getData(city);
         }
+
     }
+
+    const weatherDisplay = (weather) => {
+        let days = [];
+        for (let i = 0; i < weather.length; i += 24) {
+            days.push(weather.slice(i, i + 24));
+        }
+        console.log(days)
+        console.log(weather.length)
+        return days
+    }
+
+    const getDayAndTime = (dayIndex, hourIndex) => {
+        const day = dayIndex + 1;
+        const time = getTimeLabel(hourIndex);
+        const temp = weather[dayIndex * 24 + hourIndex];
+        return `Day ${day} ${time}: ${temp} °C `
+    }
+
+    const getTimeLabel = (index) => {
+        const hour = index % 24
+        return `${hour < 10 ? '0' : ''}${hour}:00`;
+    }
+
+
     return (
         <div className='container'>
             <div className="inputCity">
@@ -70,12 +98,26 @@ function Container() {
                                 <h1 className='latitude'> Latitude = {data.latitude}</h1>
                                 <h1 className='longitude'>Longitude = {data.longitude}</h1>
                                 <h1 className='timezone'>Timezone = {data.timezone}</h1>
+                                <div className='weatherForecast'>
+                                    <ul>
+                                        {weatherDisplay(weather).map((day, dayIndex) => (
+                                            <div key={dayIndex} className='day'>
+                                                <h2>Day {dayIndex + 1}</h2>
+                                                {day.map((temp, hourIndex) => (
+                                                    <li key={hourIndex}>
+                                                        {getDayAndTime(dayIndex, hourIndex)}
+                                                    </li>
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         )}
                     </div>
                 ) : (<p>Veriler Yükleniyor...</p>)}
             </div>
-        </div>
+        </div >
 
 
 
