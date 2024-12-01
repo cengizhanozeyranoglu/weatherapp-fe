@@ -1,30 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
+    height: 100vh;
+}
+
+.inputAndGetButton {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    justify-content: space-evenly;
+}
+
+.weatherForecast {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+
+}
+
+.day {
+    flex: 1 1 calc(25% - 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 200px;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f0f8ff;
+    gap: 10px;
+
 }
 
 .inputCity {
     display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 10px;
+    align-items: center;
+}
+
+.inputCity input {
+    flex: 1;
     border: 2px solid red;
     border-radius: 5px;
-    margin-top: 100px;
-    font-size: 20px;
+    font-size: 25px;
+    padding: 10px;
 }
 
 .handleButton {
-    margin-top: 100px;
-    border-radius: 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+    background-color: #28a745;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 25px;
+    border-radius: 10px;
+    border: solid black;
 }
 
 .succes-data {
     display: flex;
     flex-direction: row;
     margin-top: 100px;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .longitude {

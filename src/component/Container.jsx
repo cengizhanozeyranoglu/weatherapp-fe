@@ -80,13 +80,16 @@ function Container() {
 
     return (
         <div className='container'>
-            <div className="inputCity">
-                <input
-                    type="text"
-                    onChange={handleChange}
-                    placeholder='Enter the city' />
-            </div>
-            <div className='getButton'><button className='handleButton' onClick={handleSubmit}>Get Weather</button>
+            <div className='inputAndGetButton'>
+                <div className="inputCity">
+                    <input
+                        type="text"
+                        onChange={handleChange}
+                        placeholder='Enter the city' />
+                </div>
+                <div className='getButton'>
+                    <button className='handleButton' onClick={handleSubmit}>Get Weather</button>
+                </div>
             </div>
             <div className='data'>
                 {isLoaded ? (
@@ -99,18 +102,18 @@ function Container() {
                                 <h1 className='longitude'>Longitude = {data.longitude}</h1>
                                 <h1 className='timezone'>Timezone = {data.timezone}</h1>
                                 <div className='weatherForecast'>
-                                    <ul>
-                                        {weatherDisplay(weather).map((day, dayIndex) => (
-                                            <div key={dayIndex} className='day'>
-                                                <h2>Day {dayIndex + 1}</h2>
+                                    {weatherDisplay(weather).map((day, dayIndex) => (
+                                        <div key={dayIndex} className='day'>
+                                            <h2>Day {dayIndex + 1}</h2>
+                                            <ul>
                                                 {day.map((temp, hourIndex) => (
                                                     <li key={hourIndex}>
                                                         {getDayAndTime(dayIndex, hourIndex)}
                                                     </li>
                                                 ))}
-                                            </div>
-                                        ))}
-                                    </ul>
+                                            </ul>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         )}
